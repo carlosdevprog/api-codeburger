@@ -4,10 +4,14 @@ import './database'
 import { resolve } from 'path'
 import cors from 'cors'
 
+const corsOptions = {
+  origin:'https://codeburger-interface.vercel.app',
+  credentials: true,
+}
 class App {
   constructor() {
     this.app = express()
-    this.app.use(cors()) // acima as rotas e dos middlewares
+    this.app.use(cors(corsOptions)) // acima as rotas e dos middlewares
 
     this.middlewares()
     this.routes()
