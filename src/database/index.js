@@ -1,5 +1,5 @@
 import Sequelize from 'sequelize'
-import configDatabase from '../config/database'
+// import configDatabase from '../config/database'
 import mongoose from 'mongoose'
 import User from '../app/models/User'
 import Product from '../app/models/Product'
@@ -15,13 +15,13 @@ class Database {
     }
 
     init() {
-        this.connection = new Sequelize(configDatabase)
+        this.connection = new Sequelize('postgresql://postgres:AjY5n6qvkjm2ueDg6hcz@containers-us-west-9.railway.app:7985/railway')
         models.map((model) => model.init(this.connection)).map(model => model.associate && model.associate(this.connection.models))
     }
 
     mongo(){
         this.mongoConnection = mongoose.connect(
-            'mongodb://localhost:27017/codeburger',
+            'mongodb://mongo:rTClYWqbCelTcYkGGMuH@containers-us-west-54.railway.app:5598',
             {
                 useNewUrlParser: true,
                 useUnifiedTopology: true,
